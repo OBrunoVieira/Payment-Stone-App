@@ -1,3 +1,15 @@
 <resources>
     <string name="app_name">Payment Stone</string>
+
+    <!--Home Start-->
+    <string name="home_environment_selection">Selecione um ambiente</string>
+    <string name="home_stone_code_selection">Digite seu Stone Code</string>
+    <!--Home End-->
+
+    <!--Dashboard Start-->
+    <string name="dashboard_not_connected">PinPad não conectado</string>
+    <string name="dashboard_connected">PinPad conectado</string>
+    <string name="dashboard_transaction">Fazer Transação</string>
+    <string name="dashboard_message_pin_pad">Mensagem ao PinPad</string>
+    <!--Dashboard End-->
 </resources>
