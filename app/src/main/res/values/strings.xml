@@ -12,4 +12,21 @@
     <string name="dashboard_transaction">Fazer Transação</string>
     <string name="dashboard_message_pin_pad">Mensagem ao PinPad</string>
     <!--Dashboard End-->
+
+    <!--Transaction Start-->
+    <string name="transaction_zero">0</string>
+    <string name="transaction_one">1</string>
+    <string name="transaction_two">2</string>
+    <string name="transaction_three">3</string>
+    <string name="transaction_four">4</string>
+    <string name="transaction_five">5</string>
+    <string name="transaction_six">6</string>
+    <string name="transaction_seven">7</string>
+    <string name="transaction_eight">8</string>
+    <string name="transaction_nine">9</string>
+    <string name="transaction_method_payment">Selecione um método para pagamento</string>
+    <string name="transaction_send">Enviar Transação</string>
+    <string name="transaction_debit">Débito</string>
+    <string name="transaction_credit">Crédito</string>
+    <!--Transaction End-->
 </resources>
