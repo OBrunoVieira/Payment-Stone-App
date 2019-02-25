@@ -1,4 +1,4 @@
-package com.example.paymentstone
+package com.example.paymentstone.commons
 
 import android.app.Activity
 import android.app.Dialog
