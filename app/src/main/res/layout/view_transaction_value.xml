@@ -1,0 +1,177 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:id="@+id/transaction_value_content_main"
+    android:layout_height="match_parent"
+    android:clipToPadding="true"
+    android:paddingBottom="40dp">
+
+    <TextView
+        android:id="@+id/transaction_value_text_view_one"
+        style="@style/Transaction.TextView.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/transaction_one"
+        app:layout_constraintBottom_toTopOf="@id/transaction_value_text_view_four"
+        app:layout_constraintEnd_toStartOf="@+id/transaction_value_text_view_two"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread" />
+
+    <TextView
+        android:id="@+id/transaction_value_text_view_two"
+        style="@style/Transaction.TextView.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/transaction_two"
+        app:layout_constraintBottom_toTopOf="@id/transaction_value_text_view_five"
+        app:layout_constraintEnd_toStartOf="@+id/transaction_value_text_view_three"
+        app:layout_constraintStart_toEndOf="@+id/transaction_value_text_view_one"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread" />
+
+    <TextView
+        android:id="@+id/transaction_value_text_view_three"
+        style="@style/Transaction.TextView.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/transaction_three"
+        app:layout_constraintBottom_toTopOf="@id/transaction_value_text_view_six"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/transaction_value_text_view_two"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_chainStyle="spread" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/transaction_value_barrier_bottom_one"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="transaction_value_text_view_one,
+            transaction_value_text_view_two,
+            transaction_value_text_view_three" />
+
+    <TextView
+        android:id="@+id/transaction_value_text_view_four"
+        style="@style/Transaction.TextView.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/transaction_four"
+        app:layout_constraintBottom_toTopOf="@id/transaction_value_text_view_seven"
+        app:layout_constraintEnd_toStartOf="@+id/transaction_value_text_view_five"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transaction_value_barrier_bottom_one" />
+
+    <TextView
+        android:id="@+id/transaction_value_text_view_five"
+        style="@style/Transaction.TextView.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/transaction_five"
+        app:layout_constraintBottom_toTopOf="@id/transaction_value_text_view_eight"
+        app:layout_constraintEnd_toStartOf="@+id/transaction_value_text_view_six"
+        app:layout_constraintStart_toEndOf="@+id/transaction_value_text_view_four"
+        app:layout_constraintTop_toBottomOf="@+id/transaction_value_barrier_bottom_one" />
+
+    <TextView
+        android:id="@+id/transaction_value_text_view_six"
+        style="@style/Transaction.TextView.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/transaction_six"
+        app:layout_constraintBottom_toTopOf="@id/transaction_value_text_view_nine"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/transaction_value_text_view_five"
+        app:layout_constraintTop_toBottomOf="@+id/transaction_value_barrier_bottom_one" />
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/transaction_value_barrier_bottom_two"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="bottom"
+        app:constraint_referenced_ids="transaction_value_text_view_four,
+            transaction_value_text_view_five,
+            transaction_value_text_view_six" />
+
+    <TextView
+        android:id="@+id/transaction_value_text_view_seven"
+        style="@style/Transaction.TextView.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/transaction_seven"
+        app:layout_constraintBottom_toTopOf="@id/transaction_value_barrier_top"
+        app:layout_constraintEnd_toStartOf="@+id/transaction_value_text_view_eight"
+        app:layout_constraintHorizontal_chainStyle="spread"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/transaction_value_barrier_bottom_two" />
+
+    <TextView
+        android:id="@+id/transaction_value_text_view_eight"
+        style="@style/Transaction.TextView.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/transaction_eight"
+        app:layout_constraintBottom_toTopOf="@id/transaction_value_barrier_top"
+        app:layout_constraintEnd_toStartOf="@+id/transaction_value_text_view_nine"
+        app:layout_constraintStart_toEndOf="@+id/transaction_value_text_view_seven"
+        app:layout_constraintTop_toBottomOf="@+id/transaction_value_barrier_bottom_two" />
+
+    <TextView
+        android:id="@+id/transaction_value_text_view_nine"
+        style="@style/Transaction.TextView.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/transaction_nine"
+        app:layout_constraintBottom_toTopOf="@id/transaction_value_barrier_top"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/transaction_value_text_view_eight"
+        app:layout_constraintTop_toBottomOf="@+id/transaction_value_barrier_bottom_two" />
+
+
+    <androidx.constraintlayout.widget.Barrier
+        android:id="@+id/transaction_value_barrier_top"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:barrierDirection="top"
+        app:constraint_referenced_ids="transaction_value_image_view_delete,
+            transaction_value_text_view_zero,
+            transaction_value_text_view_done" />
+
+    <ImageView
+        android:id="@+id/transaction_value_image_view_delete"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="?android:attr/selectableItemBackgroundBorderless"
+        android:clickable="true"
+        android:focusable="true"
+        android:padding="16dp"
+        android:src="@drawable/ic_delete"
+        app:layout_constraintBottom_toBottomOf="@+id/transaction_value_text_view_zero"
+        app:layout_constraintEnd_toEndOf="@+id/transaction_value_text_view_seven"
+        app:layout_constraintHorizontal_chainStyle="spread_inside"
+        app:layout_constraintStart_toStartOf="@+id/transaction_value_text_view_seven"
+        app:layout_constraintTop_toTopOf="@+id/transaction_value_text_view_zero" />
+
+    <TextView
+        android:id="@+id/transaction_value_text_view_zero"
+        style="@style/Transaction.TextView.Value"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/transaction_zero"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="@+id/transaction_value_text_view_two"
+        app:layout_constraintStart_toStartOf="@+id/transaction_value_text_view_two" />
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/transaction_value_text_view_done"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:src="@drawable/ic_done"
+        app:layout_constraintBottom_toBottomOf="@+id/transaction_value_text_view_zero"
+        app:layout_constraintEnd_toEndOf="@+id/transaction_value_text_view_nine"
+        app:layout_constraintStart_toStartOf="@+id/transaction_value_text_view_nine"
+        app:layout_constraintTop_toTopOf="@+id/transaction_value_text_view_zero" />
+</androidx.constraintlayout.widget.ConstraintLayout>
