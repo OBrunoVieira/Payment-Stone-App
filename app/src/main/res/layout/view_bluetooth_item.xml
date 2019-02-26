@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_marginTop="16dp"
+    android:background="?android:attr/selectableItemBackground"
+    android:clickable="true"
+    android:focusable="true"
+    android:orientation="vertical">
+
+    <TextView
+        android:id="@+id/bluetooth_item_text_view_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textSize="16sp"
+        tools:text="Bluetooth Device Test" />
+
+    <TextView
+        android:id="@+id/bluetooth_item_text_view_address"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        tools:text="Physical Address"
+        android:textSize="12sp" />
+
+</LinearLayout>
