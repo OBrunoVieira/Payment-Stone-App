@@ -87,7 +87,7 @@ class TransactionActivity : AppCompatActivity() {
                     Stone.getUserModel(0),
                     Stone.getPinpadFromListAt(0)).apply {
                 useDefaultUI(true)
-                setConnectionCallback(object : StoneActionCallback {
+                connectionCallback = object : StoneActionCallback {
                     override fun onSuccess() {
                         if (transactionStatus == TransactionStatusEnum.APPROVED) {
                             Toast.makeText(applicationContext, "Transação enviada com sucesso e salva no banco. Para acessar, use o TransactionDAO.", Toast.LENGTH_SHORT).show()
@@ -104,13 +104,13 @@ class TransactionActivity : AppCompatActivity() {
                         Toast.makeText(context, "Erro na transação", Toast.LENGTH_SHORT).show()
                     }
 
-                })
+                }
             }.execute()
         }
     }
 
     override fun onBackPressed() {
-        if(viewSwitcher.currentView.id == R.id.transaction_method_content_main) {
+        if (viewSwitcher.currentView.id == R.id.transaction_method_content_main) {
             viewSwitcher.showPrevious()
             return
         }
