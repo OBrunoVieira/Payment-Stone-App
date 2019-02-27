@@ -31,19 +31,19 @@ class BluetoothDialog(context: Context) : Dialog(context), OnItemClickListener {
 
     override fun onItemClicked(position: Int) {
         val bluetoothData = adapter.list?.get(position)
-        val pinpadObject = PinpadObject(bluetoothData?.name, bluetoothData?.address, false)
+        val pinPadObject = PinpadObject(bluetoothData?.name, bluetoothData?.address, false)
 
-        BluetoothConnectionProvider(context, pinpadObject).apply {
-            dialogMessage = "Criando conexão com o pinpad selecionado"
-            useDefaultUI(false)
+        BluetoothConnectionProvider(context, pinPadObject).apply {
+            dialogTitle = context.getString(R.string.loading)
+            useDefaultUI(true)
             connectionCallback = object : StoneCallbackInterface {
                 override fun onSuccess() {
-                    Toast.makeText(context, "Pinpad conectado", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, R.string.dashboard_pin_pad_connected, Toast.LENGTH_SHORT).show()
                     dismiss()
                 }
 
                 override fun onError() {
-                    Toast.makeText(context, "Erro durante a conexao. Verifique a lista de erros do provider para mais informacoes", Toast.LENGTH_SHORT).show()
+                    Toast.makeText(context, R.string.dashboard_pin_pad_error, Toast.LENGTH_SHORT).show()
                 }
 
             }
