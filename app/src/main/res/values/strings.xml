@@ -39,6 +39,9 @@
     <string name="transaction_seven">7</string>
     <string name="transaction_eight">8</string>
     <string name="transaction_nine">9</string>
+    <string name="transaction_one_installment">À Vista</string>
+    <string name="transaction_interest_installment">%dx com juros</string>
+    <string name="transaction_no_interest_installment">%dx sem juros</string>
     <string name="transaction_send">Enviar Transação</string>
     <string name="transaction_debit">Débito</string>
     <string name="transaction_credit">Crédito</string>
@@ -46,5 +49,6 @@
     <string name="transaction_error">Erro na transação</string>
     <string name="transaction_error_detailed">Erro na transação: %s</string>
     <string name="transaction_method_payment">Selecione um método para pagamento</string>
+    <string name="transaction_installment_number">Selecione o número de parcelas</string>
     <!--Transaction End-->
 </resources>
