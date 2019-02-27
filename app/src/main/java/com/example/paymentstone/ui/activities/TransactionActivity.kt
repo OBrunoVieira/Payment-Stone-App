@@ -39,23 +39,6 @@ class TransactionActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transaction)
 
-        setupNumberPresentation("")
-
-        textViewZero.setOnClickListener(keyNumberListener())
-        textViewOne.setOnClickListener(keyNumberListener())
-        textViewTwo.setOnClickListener(keyNumberListener())
-        textViewThree.setOnClickListener(keyNumberListener())
-        textViewFour.setOnClickListener(keyNumberListener())
-        textViewFive.setOnClickListener(keyNumberListener())
-        textViewSix.setOnClickListener(keyNumberListener())
-        textViewSeven.setOnClickListener(keyNumberListener())
-        textViewEight.setOnClickListener(keyNumberListener())
-        textViewNine.setOnClickListener(keyNumberListener())
-
-        imageViewDelete.setOnClickListener {
-            deleteChar()
-        }
-
         textViewValue.setOnClickListener {
             if (viewSwitcher.currentView.id == R.id.transaction_method_content_main) {
                 viewSwitcher.showPrevious()
@@ -68,45 +51,21 @@ class TransactionActivity : AppCompatActivity() {
             }
         }
 
-        button.setOnClickListener {
-            val transactionObject = TransactionObject().apply {
-                amount = cleanString(textViewValue.text)
-                initiatorTransactionKey = "SEU_IDENTIFICADOR_UNICO"
+        textViewZero.setOnClickListener(keyNumberListener())
+        textViewOne.setOnClickListener(keyNumberListener())
+        textViewTwo.setOnClickListener(keyNumberListener())
+        textViewThree.setOnClickListener(keyNumberListener())
+        textViewFour.setOnClickListener(keyNumberListener())
+        textViewFive.setOnClickListener(keyNumberListener())
+        textViewSix.setOnClickListener(keyNumberListener())
+        textViewSeven.setOnClickListener(keyNumberListener())
+        textViewEight.setOnClickListener(keyNumberListener())
+        textViewNine.setOnClickListener(keyNumberListener())
 
-                subMerchantCity = "city"
-                subMerchantPostalAddress = "00000000"
-                subMerchantRegisteredIdentifier = "00000000"
-                subMerchantTaxIdentificationNumber = "33368443000199"
+        imageViewDelete.setOnClickListener { deleteChar() }
+        button.setOnClickListener { executeTransaction() }
 
-                instalmentTransaction = InstalmentTransactionEnum.ONE_INSTALMENT
-                typeOfTransaction = TypeOfTransactionEnum.CREDIT
-            }
-
-            TransactionProvider(this,
-                    transactionObject,
-                    Stone.getUserModel(0),
-                    Stone.getPinpadFromListAt(0)).apply {
-                useDefaultUI(true)
-                connectionCallback = object : StoneActionCallback {
-                    override fun onSuccess() {
-                        if (transactionStatus == TransactionStatusEnum.APPROVED) {
-                            Toast.makeText(applicationContext, "Transação enviada com sucesso e salva no banco. Para acessar, use o TransactionDAO.", Toast.LENGTH_SHORT).show()
-                        } else {
-                            Toast.makeText(applicationContext, "Erro na transação: \"$messageFromAuthorize\"", Toast.LENGTH_LONG).show()
-                        }
-                        finish()
-                    }
-
-                    override fun onStatusChanged(p0: Action?) {
-                    }
-
-                    override fun onError() {
-                        Toast.makeText(context, "Erro na transação", Toast.LENGTH_SHORT).show()
-                    }
-
-                }
-            }.execute()
-        }
+        setupNumberPresentation()
     }
 
     override fun onBackPressed() {
@@ -114,7 +73,33 @@ class TransactionActivity : AppCompatActivity() {
             viewSwitcher.showPrevious()
             return
         }
+
         super.onBackPressed()
+    }
+
+    private fun executeTransaction() {
+        TransactionProvider(this,
+                recoverTransactionObject(),
+                Stone.getUserModel(0),
+                Stone.getPinpadFromListAt(0)).apply {
+            useDefaultUI(true)
+            connectionCallback = object : StoneActionCallback {
+                override fun onSuccess() {
+                    if (transactionStatus == TransactionStatusEnum.APPROVED) {
+                        Toast.makeText(context, R.string.transaction_success, Toast.LENGTH_SHORT).show()
+                    } else {
+                        Toast.makeText(context, getString(R.string.transaction_error_detailed, messageFromAuthorize), Toast.LENGTH_LONG).show()
+                    }
+                }
+
+                override fun onStatusChanged(p0: Action?) {
+                }
+
+                override fun onError() {
+                    Toast.makeText(context, R.string.transaction_error, Toast.LENGTH_SHORT).show()
+                }
+            }
+        }.execute()
     }
 
     private fun keyNumberListener() = View.OnClickListener {
@@ -122,7 +107,7 @@ class TransactionActivity : AppCompatActivity() {
         setupNumberPresentation(textView.text)
     }
 
-    private fun setupNumberPresentation(text: CharSequence) {
+    private fun setupNumberPresentation(text: CharSequence = "") {
         var cleanedString = cleanString(textViewValue.text)
         cleanedString += text
 
@@ -142,4 +127,18 @@ class TransactionActivity : AppCompatActivity() {
     }
 
     private fun cleanString(text: CharSequence) = text.replace(Regex("[$,.]"), "")
+
+    private fun recoverTransactionObject() =
+            TransactionObject().apply {
+                amount = cleanString(textViewValue.text)
+                initiatorTransactionKey = "SEU_IDENTIFICADOR_UNICO"
+
+                subMerchantCity = "city"
+                subMerchantPostalAddress = "00000000"
+                subMerchantRegisteredIdentifier = "00000000"
+                subMerchantTaxIdentificationNumber = "33368443000199"
+
+                instalmentTransaction = InstalmentTransactionEnum.ONE_INSTALMENT
+                typeOfTransaction = TypeOfTransactionEnum.CREDIT
+            }
 }
