@@ -2,23 +2,30 @@
     <string name="app_name">Payment Stone</string>
 
     <!-- Default Start -->
+    <string name="ok">OK</string>
     <string name="settings">Configurações</string>
     <string name="cancel">Cancelar</string>
+    <string name="loading">Carregando...</string>
     <!-- Default End -->
 
     <!--Home Start-->
     <string name="home_environment_selection">Selecione um ambiente</string>
     <string name="home_stone_code_selection">Digite seu Stone Code</string>
+    <string name="home_activation_error">Erro na ativação do aplicativo, verifique a lista de erros do provider</string>
     <!--Home End-->
 
     <!--Dashboard Start-->
     <string name="dashboard_not_connected">PinPad não conectado</string>
-    <string name="dashboard_connected">PinPad conectado</string>
     <string name="dashboard_connect">Conectar</string>
-    <string name="dashboard_connected_devices">Devices Conectados</string>
+    <string name="dashboard_devices">Devices</string>
+    <string name="dashboard_select_devices">Selecione um device</string>
     <string name="dashboard_bluetooth_disabled">Seu bluetooth está desabilitado. Por favor, habilite-o nas suas configurações.</string>
     <string name="dashboard_transaction">Fazer Transação</string>
     <string name="dashboard_message_pin_pad">Mensagem ao PinPad</string>
+    <string name="dashboard_pin_pad_connected">PinPad conectado</string>
+    <string name="dashboard_pin_pad_not_connected_title">Opa! Cadê o PinPad?!</string>
+    <string name="dashboard_pin_pad_not_connected_description">Para continuarmos, precisamos que um PinPad esteja conectado.</string>
+    <string name="dashboard_pin_pad_error">Erro durante a conexão. Verifique a lista de erros do provider para mais informações.</string>
     <!--Dashboard End-->
 
     <!--Transaction Start-->
@@ -32,9 +39,12 @@
     <string name="transaction_seven">7</string>
     <string name="transaction_eight">8</string>
     <string name="transaction_nine">9</string>
-    <string name="transaction_method_payment">Selecione um método para pagamento</string>
     <string name="transaction_send">Enviar Transação</string>
     <string name="transaction_debit">Débito</string>
     <string name="transaction_credit">Crédito</string>
+    <string name="transaction_success">Transação enviada com sucesso e salva no banco.</string>
+    <string name="transaction_error">Erro na transação</string>
+    <string name="transaction_error_detailed">Erro na transação: %s</string>
+    <string name="transaction_method_payment">Selecione um método para pagamento</string>
     <!--Transaction End-->
 </resources>
