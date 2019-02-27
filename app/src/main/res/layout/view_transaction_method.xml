@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/transaction_method_content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:id="@+id/transaction_method_content_main"
     android:orientation="horizontal"
+    android:animateLayoutChanges="true"
     android:padding="10dp">
 
     <TextView
@@ -20,15 +21,15 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView2"
+        android:id="@+id/transaction_method_card_view_debit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         app:cardBackgroundColor="@color/atlantis"
         app:contentPadding="4dp"
-        app:layout_constraintEnd_toStartOf="@+id/cardView"
+        app:layout_constraintEnd_toStartOf="@+id/transaction_method_card_view_credit"
         app:layout_constraintHorizontal_bias="0.5"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@id/transaction_method_title">
@@ -38,9 +39,11 @@
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/transaction_method_radio_button_debit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|end"
+                android:clickable="false"
                 android:scaleX="0.75"
                 android:scaleY="0.75"
                 app:buttonTint="@android:color/white" />
@@ -58,17 +61,17 @@
     </androidx.cardview.widget.CardView>
 
     <androidx.cardview.widget.CardView
-        android:id="@+id/cardView"
+        android:id="@+id/transaction_method_card_view_credit"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_marginStart="10dp"
-        android:layout_marginTop="40dp"
+        android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         app:cardBackgroundColor="@color/atlantis"
         app:contentPadding="4dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.5"
-        app:layout_constraintStart_toEndOf="@+id/cardView2"
+        app:layout_constraintStart_toEndOf="@+id/transaction_method_card_view_debit"
         app:layout_constraintTop_toBottomOf="@id/transaction_method_title">
 
         <FrameLayout
@@ -76,9 +79,11 @@
             android:layout_height="wrap_content">
 
             <androidx.appcompat.widget.AppCompatRadioButton
+                android:id="@+id/transaction_method_radio_button_credit"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_gravity="top|end"
+                android:clickable="false"
                 android:scaleX="0.75"
                 android:scaleY="0.75"
                 app:buttonTint="@android:color/white" />
@@ -96,10 +101,45 @@
         </FrameLayout>
     </androidx.cardview.widget.CardView>
 
+    <TextView
+        android:id="@+id/transaction_method_text_view_installment"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/transaction_installment_number"
+        android:textColor="@android:color/black"
+        android:textSize="16sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/transaction_method_card_view_credit" />
+
+    <Spinner
+        android:id="@+id/transaction_method_spinner"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/transaction_method_text_view_installment" />
+
+    <androidx.constraintlayout.widget.Group
+        android:id="@+id/transaction_method_group_installment"
+        android:layout_width="wrap_content"
+        android:visibility="gone"
+        android:layout_height="wrap_content"
+        app:constraint_referenced_ids="transaction_method_text_view_installment,
+        transaction_method_spinner" />
+
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/transaction_method_button"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginEnd="10dp"
         android:background="@color/colorAccent"
         android:text="@string/transaction_send"
         android:textColor="@android:color/white"
