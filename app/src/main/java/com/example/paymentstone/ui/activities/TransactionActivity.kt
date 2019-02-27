@@ -2,8 +2,13 @@ package com.example.paymentstone.ui.activities
 
 import android.os.Bundle
 import android.view.View
+import android.view.View.GONE
+import android.view.View.VISIBLE
 import android.widget.*
+import androidx.annotation.IdRes
 import androidx.appcompat.app.AppCompatActivity
+import androidx.cardview.widget.CardView
+import androidx.constraintlayout.widget.Group
 import com.example.paymentstone.R
 import com.example.paymentstone.commons.bindView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
@@ -29,15 +34,40 @@ class TransactionActivity : AppCompatActivity() {
     private val textViewSeven by bindView<TextView>(R.id.transaction_value_text_view_seven)
     private val textViewEight by bindView<TextView>(R.id.transaction_value_text_view_eight)
     private val textViewNine by bindView<TextView>(R.id.transaction_value_text_view_nine)
+    private val viewSwitcher by bindView<ViewSwitcher>(R.id.transaction_view_switcher)
     private val textViewValue by bindView<TextView>(R.id.transaction_text_view)
     private val imageViewDelete by bindView<ImageView>(R.id.transaction_value_image_view_delete)
-    private val viewSwitcher by bindView<ViewSwitcher>(R.id.transaction_view_switcher)
+    private val cardViewDebit by bindView<CardView>(R.id.transaction_method_card_view_debit)
+    private val cardViewCredit by bindView<CardView>(R.id.transaction_method_card_view_credit)
+    private val radioDebit by bindView<RadioButton>(R.id.transaction_method_radio_button_debit)
+    private val radioCredit by bindView<RadioButton>(R.id.transaction_method_radio_button_credit)
     private val button by bindView<Button>(R.id.transaction_method_button)
     private val fab by bindView<FloatingActionButton>(R.id.transaction_value_text_view_done)
+    private val spinner by bindView<Spinner>(R.id.transaction_method_spinner)
+    private val groupInstallment by bindView<Group>(R.id.transaction_method_group_installment)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transaction)
+        spinner.adapter = recoverArrayAdapter()
+        setupNumberPresentation()
+
+        textViewZero.setOnClickListener(keyNumberListener())
+        textViewOne.setOnClickListener(keyNumberListener())
+        textViewTwo.setOnClickListener(keyNumberListener())
+        textViewThree.setOnClickListener(keyNumberListener())
+        textViewFour.setOnClickListener(keyNumberListener())
+        textViewFive.setOnClickListener(keyNumberListener())
+        textViewSix.setOnClickListener(keyNumberListener())
+        textViewSeven.setOnClickListener(keyNumberListener())
+        textViewEight.setOnClickListener(keyNumberListener())
+        textViewNine.setOnClickListener(keyNumberListener())
+
+        cardViewCredit.setOnClickListener { managePaymentMethodClick(it.id) }
+        cardViewDebit.setOnClickListener { managePaymentMethodClick(it.id) }
+
+        imageViewDelete.setOnClickListener { deleteChar() }
+        button.setOnClickListener { executeTransaction() }
 
         textViewValue.setOnClickListener {
             if (viewSwitcher.currentView.id == R.id.transaction_method_content_main) {
@@ -51,21 +81,6 @@ class TransactionActivity : AppCompatActivity() {
             }
         }
 
-        textViewZero.setOnClickListener(keyNumberListener())
-        textViewOne.setOnClickListener(keyNumberListener())
-        textViewTwo.setOnClickListener(keyNumberListener())
-        textViewThree.setOnClickListener(keyNumberListener())
-        textViewFour.setOnClickListener(keyNumberListener())
-        textViewFive.setOnClickListener(keyNumberListener())
-        textViewSix.setOnClickListener(keyNumberListener())
-        textViewSeven.setOnClickListener(keyNumberListener())
-        textViewEight.setOnClickListener(keyNumberListener())
-        textViewNine.setOnClickListener(keyNumberListener())
-
-        imageViewDelete.setOnClickListener { deleteChar() }
-        button.setOnClickListener { executeTransaction() }
-
-        setupNumberPresentation()
     }
 
     override fun onBackPressed() {
@@ -126,7 +141,26 @@ class TransactionActivity : AppCompatActivity() {
         }
     }
 
+    private fun managePaymentMethodClick(@IdRes id: Int) {
+        val isDebitMethod = id == cardViewDebit.id
+        radioDebit.isChecked = isDebitMethod
+        radioCredit.isChecked = !isDebitMethod
+        groupInstallment.visibility = if (isDebitMethod) GONE else VISIBLE
+    }
+
     private fun cleanString(text: CharSequence) = text.replace(Regex("[$,.]"), "")
+
+    private fun recoverArrayAdapter(): ArrayAdapter<String> {
+        val installmentList = InstalmentTransactionEnum.values().map {
+            when {
+                it.count == 1 -> getString(R.string.transaction_one_installment)
+                it.insterest -> getString(R.string.transaction_interest_installment, it.count)
+                else -> getString(R.string.transaction_no_interest_installment, it.count)
+            }
+        }
+
+        return ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, installmentList)
+    }
 
     private fun recoverTransactionObject() =
             TransactionObject().apply {
@@ -138,7 +172,7 @@ class TransactionActivity : AppCompatActivity() {
                 subMerchantRegisteredIdentifier = "00000000"
                 subMerchantTaxIdentificationNumber = "33368443000199"
 
-                instalmentTransaction = InstalmentTransactionEnum.ONE_INSTALMENT
-                typeOfTransaction = TypeOfTransactionEnum.CREDIT
+                instalmentTransaction = InstalmentTransactionEnum.getAt(spinner.selectedItemPosition)
+                typeOfTransaction = if (radioCredit.isChecked) TypeOfTransactionEnum.CREDIT else TypeOfTransactionEnum.DEBIT
             }
 }
