@@ -23,18 +23,20 @@ class DashboardActivity : AppCompatActivity() {
         setContentView(R.layout.activity_dashboard)
         bluetoothDialog = BluetoothDialog(this)
 
-        val isPinPadConnected = Stone.getPinpadListSize() > 0
-        cardViewTransaction.apply {
-            //            isEnabled = isPinPadConnected
-//            alpha = if (isPinPadConnected) 1f else 0.4f
-        }
-
         cardViewTransaction.setOnClickListener {
-            startActivity(Intent(this, TransactionActivity::class.java))
+            val isPinPadConnected = Stone.getPinpadListSize() > 0
+            if (isPinPadConnected) {
+                startActivity(Intent(this, TransactionActivity::class.java))
+            } else {
+                AlertDialog.Builder(this)
+                        .setTitle(R.string.dashboard_pin_pad_not_connected_title)
+                        .setMessage(R.string.dashboard_pin_pad_not_connected_description)
+                        .setPositiveButton(R.string.ok) { dialog, _ -> dialog.dismiss() }
+                        .show()
+            }
         }
 
         buttonConnect.setOnClickListener {
-
             if (!BluetoothAdapter.getDefaultAdapter().isEnabled) {
                 AlertDialog.Builder(this)
                         .setMessage(R.string.dashboard_bluetooth_disabled)
@@ -42,9 +44,7 @@ class DashboardActivity : AppCompatActivity() {
                             dialog.dismiss()
                             startActivity(Intent().setAction(android.provider.Settings.ACTION_BLUETOOTH_SETTINGS))
                         }
-                        .setNegativeButton(R.string.cancel) { dialog, _ ->
-                            dialog.dismiss()
-                        }
+                        .setNegativeButton(R.string.cancel) { dialog, _ -> dialog.dismiss() }
                         .show()
             } else {
                 bluetoothDialog.show()
