@@ -4,8 +4,8 @@
     android:id="@+id/transaction_method_content_main"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="horizontal"
     android:animateLayoutChanges="true"
+    android:orientation="horizontal"
     android:padding="10dp">
 
     <TextView
@@ -129,10 +129,22 @@
     <androidx.constraintlayout.widget.Group
         android:id="@+id/transaction_method_group_installment"
         android:layout_width="wrap_content"
-        android:visibility="gone"
         android:layout_height="wrap_content"
+        android:visibility="gone"
         app:constraint_referenced_ids="transaction_method_text_view_installment,
         transaction_method_spinner" />
+
+    <com.google.android.material.checkbox.MaterialCheckBox
+        android:id="@+id/transaction_method_check_box"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="10dp"
+        android:text="@string/transaction_with_capture"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/transaction_method_spinner" />
 
     <androidx.appcompat.widget.AppCompatButton
         android:id="@+id/transaction_method_button"
