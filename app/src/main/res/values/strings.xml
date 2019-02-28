@@ -50,5 +50,6 @@
     <string name="transaction_error_detailed">Erro na transação: %s</string>
     <string name="transaction_method_payment">Selecione um método para pagamento</string>
     <string name="transaction_installment_number">Selecione o número de parcelas</string>
+    <string name="transaction_with_capture">Transação com captura</string>
     <!--Transaction End-->
 </resources>
