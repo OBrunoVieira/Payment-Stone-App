@@ -1,5 +1,6 @@
 package com.example.paymentstone.ui.activities
 
+import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import android.view.View.GONE
@@ -11,6 +12,7 @@ import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.Group
 import com.example.paymentstone.R
 import com.example.paymentstone.commons.bindView
+import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import stone.application.enums.Action
 import stone.application.enums.InstalmentTransactionEnum
@@ -44,6 +46,7 @@ class TransactionActivity : AppCompatActivity() {
     private val button by bindView<Button>(R.id.transaction_method_button)
     private val fab by bindView<FloatingActionButton>(R.id.transaction_value_text_view_done)
     private val spinner by bindView<Spinner>(R.id.transaction_method_spinner)
+    private val checkBoxCapture by bindView<MaterialCheckBox>(R.id.transaction_method_check_box)
     private val groupInstallment by bindView<Group>(R.id.transaction_method_group_installment)
 
     override fun onCreate(savedInstanceState: Bundle?) {
@@ -93,17 +96,23 @@ class TransactionActivity : AppCompatActivity() {
     }
 
     private fun executeTransaction() {
-        TransactionProvider(this,
-                recoverTransactionObject(),
-                Stone.getUserModel(0),
-                Stone.getPinpadFromListAt(0)).apply {
+        TransactionProvider(
+            this,
+            recoverTransactionObject(),
+            Stone.getUserModel(0),
+            Stone.getPinpadFromListAt(0)
+        ).apply {
             useDefaultUI(true)
             connectionCallback = object : StoneActionCallback {
                 override fun onSuccess() {
                     if (transactionStatus == TransactionStatusEnum.APPROVED) {
                         Toast.makeText(context, R.string.transaction_success, Toast.LENGTH_SHORT).show()
                     } else {
-                        Toast.makeText(context, getString(R.string.transaction_error_detailed, messageFromAuthorize), Toast.LENGTH_LONG).show()
+                        Toast.makeText(
+                            context,
+                            getString(R.string.transaction_error_detailed, messageFromAuthorize),
+                            Toast.LENGTH_LONG
+                        ).show()
                     }
                 }
 
@@ -163,16 +172,18 @@ class TransactionActivity : AppCompatActivity() {
     }
 
     private fun recoverTransactionObject() =
-            TransactionObject().apply {
-                amount = cleanString(textViewValue.text)
-                initiatorTransactionKey = "SEU_IDENTIFICADOR_UNICO"
+        TransactionObject().apply {
+            amount = cleanString(textViewValue.text)
+            isCapture = checkBoxCapture.isChecked
 
-                subMerchantCity = "city"
-                subMerchantPostalAddress = "00000000"
-                subMerchantRegisteredIdentifier = "00000000"
-                subMerchantTaxIdentificationNumber = "33368443000199"
+            subMerchantCity = "city"
+            subMerchantPostalAddress = "00000000"
+            subMerchantRegisteredIdentifier = "00000000"
+            subMerchantTaxIdentificationNumber = "33368443000199"
+            subMerchantCategoryCode = "123"
+            subMerchantAddress = "address"
 
-                instalmentTransaction = InstalmentTransactionEnum.getAt(spinner.selectedItemPosition)
-                typeOfTransaction = if (radioCredit.isChecked) TypeOfTransactionEnum.CREDIT else TypeOfTransactionEnum.DEBIT
-            }
+            instalmentTransaction = InstalmentTransactionEnum.getAt(spinner.selectedItemPosition)
+            typeOfTransaction = if (radioCredit.isChecked) TypeOfTransactionEnum.CREDIT else TypeOfTransactionEnum.DEBIT
+        }
 }
