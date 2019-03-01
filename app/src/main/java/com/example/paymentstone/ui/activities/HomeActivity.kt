@@ -12,6 +12,8 @@ import stone.application.interfaces.StoneCallbackInterface
 import stone.environment.Environment
 import stone.providers.ActiveApplicationProvider
 import stone.utils.Stone
+import stone.application.StoneStart
+
 
 class HomeActivity : AppCompatActivity() {
 
@@ -21,7 +23,12 @@ class HomeActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_home)
+        setContentView(com.example.paymentstone.R.layout.activity_home)
+
+        if (StoneStart.init(this) != null) {
+            redirectToDashboard()
+            return
+        }
 
         fabDone.setOnClickListener { activateApplication() }
         setupSpinner()
@@ -38,8 +45,8 @@ class HomeActivity : AppCompatActivity() {
 
             override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
                 val item = Environment.valueOf(
-                    adapter.getItem(position)
-                        ?: Environment.PRODUCTION.name
+                        adapter.getItem(position)
+                                ?: Environment.PRODUCTION.name
                 )
                 Stone.setEnvironment(item)
             }
@@ -52,7 +59,7 @@ class HomeActivity : AppCompatActivity() {
             dialogTitle = context.getString(R.string.loading)
             connectionCallback = object : StoneCallbackInterface {
                 override fun onSuccess() {
-                    startActivity(Intent(this@HomeActivity, DashboardActivity::class.java))
+                    redirectToDashboard()
                 }
 
                 override fun onError() {
@@ -60,5 +67,10 @@ class HomeActivity : AppCompatActivity() {
                 }
             }
         }.activate(editText.text.toString())
+    }
+
+    private fun redirectToDashboard() {
+        startActivity(Intent(this, DashboardActivity::class.java))
+        finish()
     }
 }
