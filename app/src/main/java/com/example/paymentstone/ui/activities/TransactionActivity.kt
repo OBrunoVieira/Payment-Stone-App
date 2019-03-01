@@ -1,6 +1,5 @@
 package com.example.paymentstone.ui.activities
 
-import android.graphics.BitmapFactory
 import android.os.Bundle
 import android.view.View
 import android.view.View.GONE
@@ -97,10 +96,10 @@ class TransactionActivity : AppCompatActivity() {
 
     private fun executeTransaction() {
         TransactionProvider(
-            this,
-            recoverTransactionObject(),
-            Stone.getUserModel(0),
-            Stone.getPinpadFromListAt(0)
+                this,
+                recoverTransactionObject(),
+                Stone.getUserModel(0),
+                Stone.getPinpadFromListAt(0)
         ).apply {
             useDefaultUI(true)
             connectionCallback = object : StoneActionCallback {
@@ -109,9 +108,9 @@ class TransactionActivity : AppCompatActivity() {
                         Toast.makeText(context, R.string.transaction_success, Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(
-                            context,
-                            getString(R.string.transaction_error_detailed, messageFromAuthorize),
-                            Toast.LENGTH_LONG
+                                context,
+                                getString(R.string.transaction_error_detailed, messageFromAuthorize),
+                                Toast.LENGTH_LONG
                         ).show()
                     }
                 }
@@ -152,6 +151,7 @@ class TransactionActivity : AppCompatActivity() {
 
     private fun managePaymentMethodClick(@IdRes id: Int) {
         val isDebitMethod = id == cardViewDebit.id
+        button.isEnabled = true
         radioDebit.isChecked = isDebitMethod
         radioCredit.isChecked = !isDebitMethod
         groupInstallment.visibility = if (isDebitMethod) GONE else VISIBLE
@@ -172,18 +172,18 @@ class TransactionActivity : AppCompatActivity() {
     }
 
     private fun recoverTransactionObject() =
-        TransactionObject().apply {
-            amount = cleanString(textViewValue.text)
-            isCapture = checkBoxCapture.isChecked
+            TransactionObject().apply {
+                amount = cleanString(textViewValue.text)
+                isCapture = checkBoxCapture.isChecked
 
-            subMerchantCity = "city"
-            subMerchantPostalAddress = "00000000"
-            subMerchantRegisteredIdentifier = "00000000"
-            subMerchantTaxIdentificationNumber = "33368443000199"
-            subMerchantCategoryCode = "123"
-            subMerchantAddress = "address"
+                subMerchantCity = "city"
+                subMerchantPostalAddress = "00000000"
+                subMerchantRegisteredIdentifier = "00000000"
+                subMerchantTaxIdentificationNumber = "33368443000199"
+                subMerchantCategoryCode = "123"
+                subMerchantAddress = "address"
 
-            instalmentTransaction = InstalmentTransactionEnum.getAt(spinner.selectedItemPosition)
-            typeOfTransaction = if (radioCredit.isChecked) TypeOfTransactionEnum.CREDIT else TypeOfTransactionEnum.DEBIT
-        }
+                instalmentTransaction = InstalmentTransactionEnum.getAt(spinner.selectedItemPosition)
+                typeOfTransaction = if (radioCredit.isChecked) TypeOfTransactionEnum.CREDIT else TypeOfTransactionEnum.DEBIT
+            }
 }
