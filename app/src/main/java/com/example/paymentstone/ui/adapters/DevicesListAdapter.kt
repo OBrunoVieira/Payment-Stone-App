@@ -5,19 +5,19 @@ import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.paymentstone.R
 import com.example.paymentstone.commons.OnItemClickListener
-import com.example.paymentstone.model.BluetoothData
-import com.example.paymentstone.ui.view_holders.BluetoothListViewHolder
+import com.example.paymentstone.model.DevicesData
+import com.example.paymentstone.ui.view_holders.DevicesListViewHolder
 
-class BluetoothListAdapter(var list: List<BluetoothData>? = null, var listener: OnItemClickListener? = null)
-    : RecyclerView.Adapter<BluetoothListViewHolder>() {
+class DevicesListAdapter(var list: List<DevicesData>? = null, var listener: OnItemClickListener? = null)
+    : RecyclerView.Adapter<DevicesListViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int) =
-            BluetoothListViewHolder(LayoutInflater.from(parent.context)
+            DevicesListViewHolder(LayoutInflater.from(parent.context)
                     .inflate(R.layout.view_bluetooth_item, parent, false), listener)
 
     override fun getItemCount() = list?.size ?: 0
 
-    override fun onBindViewHolder(holder: BluetoothListViewHolder, position: Int) {
+    override fun onBindViewHolder(holder: DevicesListViewHolder, position: Int) {
         holder.bind(list?.get(position))
     }
 

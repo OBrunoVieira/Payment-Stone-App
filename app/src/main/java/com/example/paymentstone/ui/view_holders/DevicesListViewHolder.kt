@@ -6,9 +6,9 @@ import androidx.recyclerview.widget.RecyclerView
 import com.example.paymentstone.R
 import com.example.paymentstone.commons.OnItemClickListener
 import com.example.paymentstone.commons.bindView
-import com.example.paymentstone.model.BluetoothData
+import com.example.paymentstone.model.DevicesData
 
-class BluetoothListViewHolder(itemView: View, listener: OnItemClickListener?) : RecyclerView.ViewHolder(itemView) {
+class DevicesListViewHolder(itemView: View, listener: OnItemClickListener?) : RecyclerView.ViewHolder(itemView) {
     private val textViewTitle by bindView<TextView>(R.id.bluetooth_item_text_view_title)
     private val textViewAddress by bindView<TextView>(R.id.bluetooth_item_text_view_address)
 
@@ -18,7 +18,7 @@ class BluetoothListViewHolder(itemView: View, listener: OnItemClickListener?) : 
         }
     }
 
-    fun bind(data: BluetoothData?) {
+    fun bind(data: DevicesData?) {
         textViewTitle.text = data?.name
         textViewAddress.text = data?.address
     }
