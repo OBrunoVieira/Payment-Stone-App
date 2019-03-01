@@ -16,13 +16,14 @@
     <!--Home End-->
 
     <!--Dashboard Start-->
-    <string name="dashboard_not_connected">PinPad não conectado</string>
     <string name="dashboard_connect">Conectar</string>
+    <string name="dashboard_disconnect">Desconectar</string>
     <string name="dashboard_devices">Devices</string>
     <string name="dashboard_select_devices">Selecione um device</string>
     <string name="dashboard_transaction">Fazer Transação</string>
     <string name="dashboard_message_pin_pad">Mensagem ao PinPad</string>
     <string name="dashboard_exit">Encerrar Sessão</string>
+    <string name="dashboard_pin_pad_not_connected">PinPad não conectado</string>
     <string name="dashboard_pin_pad_connected">PinPad conectado</string>
     <string name="dashboard_pin_pad_not_connected_title">Opa! Cadê o PinPad?!</string>
     <string name="dashboard_pin_pad_not_connected_description">Para continuarmos, precisamos que um PinPad esteja conectado.</string>
