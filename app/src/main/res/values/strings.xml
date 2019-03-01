@@ -20,9 +20,9 @@
     <string name="dashboard_connect">Conectar</string>
     <string name="dashboard_devices">Devices</string>
     <string name="dashboard_select_devices">Selecione um device</string>
-    <string name="dashboard_bluetooth_disabled">Seu bluetooth está desabilitado. Por favor, habilite-o nas suas configurações.</string>
     <string name="dashboard_transaction">Fazer Transação</string>
     <string name="dashboard_message_pin_pad">Mensagem ao PinPad</string>
+    <string name="dashboard_exit">Encerrar Sessão</string>
     <string name="dashboard_pin_pad_connected">PinPad conectado</string>
     <string name="dashboard_pin_pad_not_connected_title">Opa! Cadê o PinPad?!</string>
     <string name="dashboard_pin_pad_not_connected_description">Para continuarmos, precisamos que um PinPad esteja conectado.</string>
@@ -32,6 +32,16 @@
     <!--Message Start-->
     <string name="message_pin_pad_hint">Ex. Bem-vindo!</string>
     <!--Message End-->
+
+    <!--Bluetooth Start-->
+    <string name="bluetooth_disabled">Seu bluetooth está desabilitado. Por favor, habilite-o nas suas configurações.</string>
+    <!--Bluetooth End-->
+
+    <!--Logout Start-->
+    <string name="logout_confirmation">Você tem certeza que deseja finalizar sua sessão?</string>
+    <string name="logout_feedback">Encerrando sessão...</string>
+    <string name="logout_error">Erro na ativacao do aplicativo, verifique a lista de erros do provider</string>
+    <!--Logout End-->
 
     <!--Transaction Start-->
     <string name="transaction_zero">0</string>
