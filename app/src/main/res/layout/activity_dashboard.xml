@@ -3,6 +3,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    xmlns:tools="http://schemas.android.com/tools"
     android:orientation="vertical">
 
     <androidx.appcompat.widget.Toolbar
@@ -19,7 +20,10 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
-        android:text="@string/dashboard_not_connected"
+        android:drawableStart="@drawable/shape_circle_green"
+        android:drawableLeft="@drawable/shape_circle_green"
+        android:drawablePadding="10dp"
+        android:text="@string/dashboard_pin_pad_not_connected"
         app:layout_constraintBottom_toBottomOf="@+id/dashboard_button_pin_pad_action"
         app:layout_constraintEnd_toStartOf="@+id/dashboard_button_pin_pad_action"
         app:layout_constraintStart_toStartOf="parent"
@@ -33,11 +37,15 @@
         android:layout_marginTop="20dp"
         android:layout_marginEnd="10dp"
         android:layout_marginBottom="10dp"
+        android:background="@drawable/shape_outline_green"
         android:minHeight="0dp"
+        android:paddingTop="4dp"
+        android:paddingBottom="4dp"
+        android:paddingStart="8dp"
+        android:paddingEnd="8dp"
         android:text="@string/dashboard_connect"
-        android:textColor="@android:color/white"
+        android:textColor="@color/atlantis"
         android:textSize="12sp"
-        app:backgroundTint="@color/atlantis"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/dashboard_text_view_pin_pad_status"
         app:layout_constraintTop_toBottomOf="@id/dashboard_toolbar" />
