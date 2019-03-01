@@ -6,6 +6,7 @@
     <string name="settings">Configurações</string>
     <string name="cancel">Cancelar</string>
     <string name="loading">Carregando...</string>
+    <string name="send">Enviar</string>
     <!-- Default End -->
 
     <!--Home Start-->
@@ -27,6 +28,10 @@
     <string name="dashboard_pin_pad_not_connected_description">Para continuarmos, precisamos que um PinPad esteja conectado.</string>
     <string name="dashboard_pin_pad_error">Erro durante a conexão. Verifique a lista de erros do provider para mais informações.</string>
     <!--Dashboard End-->
+
+    <!--Message Start-->
+    <string name="message_pin_pad_hint">Ex. Bem-vindo!</string>
+    <!--Message End-->
 
     <!--Transaction Start-->
     <string name="transaction_zero">0</string>
