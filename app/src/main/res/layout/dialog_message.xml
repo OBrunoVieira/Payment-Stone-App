@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:orientation="vertical"
+    android:paddingBottom="10dp">
+
+    <TextView
+        android:id="@+id/message_text_view_title"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentStart="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentTop="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:background="@color/persian_green"
+        android:padding="18dp"
+        android:text="@string/dashboard_message_pin_pad"
+        android:textColor="@android:color/white"
+        android:textSize="20sp"
+        android:textStyle="bold" />
+
+    <EditText
+        android:id="@+id/message_edit_text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/message_text_view_title"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:hint="@string/message_pin_pad_hint"
+        android:imeOptions="actionSend"
+        android:inputType="text" />
+
+    <TextView
+        android:id="@+id/message_text_view_send"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/message_edit_text"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentRight="true"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:padding="10dp"
+        android:text="@string/send"
+        android:textAllCaps="true"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@color/colorAccent" />
+
+    <TextView
+        android:id="@+id/message_text_view_cancel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/message_edit_text"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="10dp"
+        android:layout_toStartOf="@id/message_text_view_send"
+        android:layout_toLeftOf="@id/message_text_view_send"
+        android:padding="10dp"
+        android:text="@string/cancel"
+        android:textAllCaps="true"
+        android:fontFamily="sans-serif-medium"
+        android:textColor="@android:color/darker_gray" />
+</RelativeLayout>
