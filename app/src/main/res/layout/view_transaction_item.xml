@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    android:layout_margin="10dp"
+    android:orientation="vertical"
+    app:cardUseCompatPadding="true">
+
+    <androidx.constraintlayout.widget.ConstraintLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <View
+            android:id="@+id/transaction_item_view_indicator"
+            android:layout_width="6dp"
+            android:layout_height="0dp"
+            android:background="@color/colorAccent"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <TextView
+            android:id="@+id/transaction_item_text_view_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="10dp"
+            android:textSize="16sp"
+            android:textStyle="bold"
+            app:layout_constraintEnd_toStartOf="@id/transaction_list_image_view_menu"
+            app:layout_constraintStart_toEndOf="@id/transaction_item_view_indicator"
+            app:layout_constraintTop_toTopOf="parent"
+            tools:text="R$300,00 - 2x sem juros" />
+
+        <TextView
+            android:id="@+id/transaction_item_text_view_sub_title"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:textSize="16sp"
+            app:layout_constraintEnd_toStartOf="@id/transaction_list_image_view_menu"
+            app:layout_constraintStart_toEndOf="@id/transaction_item_view_indicator"
+            app:layout_constraintTop_toBottomOf="@id/transaction_item_text_view_title"
+            tools:text="xxxx xxxx xxxx 3650" />
+
+        <TextView
+            android:id="@+id/transaction_item_text_view_status"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_marginTop="12dp"
+            android:layout_marginBottom="10dp"
+            android:textSize="12sp"
+            android:textStyle="bold"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toEndOf="@id/transaction_item_view_indicator"
+            app:layout_constraintTop_toBottomOf="@id/transaction_item_text_view_sub_title"
+            tools:text="Cancelled" />
+
+        <TextView
+            android:id="@+id/transaction_item_text_view_date"
+            android:layout_width="0dp"
+            android:layout_height="wrap_content"
+            android:layout_marginEnd="10dp"
+            android:layout_marginRight="10dp"
+            android:gravity="end"
+            android:textSize="12sp"
+            app:layout_constraintBaseline_toBaselineOf="@+id/transaction_item_text_view_status"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toEndOf="@id/transaction_item_text_view_status"
+            tools:text="08/03/2019 - 14:30:24" />
+
+        <ImageView
+            android:id="@+id/transaction_list_image_view_menu"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_margin="10dp"
+            android:background="?android:attr/selectableItemBackgroundBorderless"
+            android:clickable="true"
+            android:focusable="true"
+            android:src="@drawable/ic_menu"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+    </androidx.constraintlayout.widget.ConstraintLayout>
+
+</androidx.cardview.widget.CardView>
