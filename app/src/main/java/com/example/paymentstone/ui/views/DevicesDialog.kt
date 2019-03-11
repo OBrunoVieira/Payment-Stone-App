@@ -9,8 +9,8 @@ import android.widget.Toast
 import androidx.core.content.ContextCompat
 import androidx.recyclerview.widget.RecyclerView
 import com.example.paymentstone.R
-import com.example.paymentstone.commons.OnItemClickListener
-import com.example.paymentstone.commons.bindView
+import com.example.paymentstone.commons.listeners.OnItemClickListener
+import com.example.paymentstone.commons.extensions.bindView
 import com.example.paymentstone.model.DevicesData
 import com.example.paymentstone.ui.adapters.DevicesListAdapter
 import stone.application.interfaces.StoneCallbackInterface

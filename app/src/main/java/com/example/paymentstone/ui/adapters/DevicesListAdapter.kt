@@ -4,7 +4,7 @@ import android.view.LayoutInflater
 import android.view.ViewGroup
 import androidx.recyclerview.widget.RecyclerView
 import com.example.paymentstone.R
-import com.example.paymentstone.commons.OnItemClickListener
+import com.example.paymentstone.commons.listeners.OnItemClickListener
 import com.example.paymentstone.model.DevicesData
 import com.example.paymentstone.ui.view_holders.DevicesListViewHolder
 

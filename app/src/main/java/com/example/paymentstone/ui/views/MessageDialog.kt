@@ -7,7 +7,7 @@ import android.view.inputmethod.EditorInfo
 import android.widget.EditText
 import android.widget.TextView
 import com.example.paymentstone.R
-import com.example.paymentstone.commons.bindView
+import com.example.paymentstone.commons.extensions.bindView
 import stone.providers.DisplayMessageProvider
 import stone.utils.Stone
 

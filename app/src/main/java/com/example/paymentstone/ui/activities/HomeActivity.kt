@@ -6,7 +6,7 @@ import android.view.View
 import android.widget.*
 import androidx.appcompat.app.AppCompatActivity
 import com.example.paymentstone.R
-import com.example.paymentstone.commons.bindView
+import com.example.paymentstone.commons.extensions.bindView
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import stone.application.interfaces.StoneCallbackInterface
 import stone.environment.Environment

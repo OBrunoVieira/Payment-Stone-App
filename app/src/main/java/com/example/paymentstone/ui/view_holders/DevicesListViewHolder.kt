@@ -4,8 +4,8 @@ import android.view.View
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import com.example.paymentstone.R
-import com.example.paymentstone.commons.OnItemClickListener
-import com.example.paymentstone.commons.bindView
+import com.example.paymentstone.commons.listeners.OnItemClickListener
+import com.example.paymentstone.commons.extensions.bindView
 import com.example.paymentstone.model.DevicesData
 
 class DevicesListViewHolder(itemView: View, listener: OnItemClickListener?) : RecyclerView.ViewHolder(itemView) {

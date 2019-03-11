@@ -10,7 +10,9 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.Group
 import com.example.paymentstone.R
-import com.example.paymentstone.commons.bindView
+import com.example.paymentstone.commons.extensions.bindView
+import com.example.paymentstone.commons.extensions.toReadableString
+import com.example.paymentstone.commons.extensions.transformToCurrency
 import com.google.android.material.checkbox.MaterialCheckBox
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import stone.application.enums.Action
@@ -96,10 +98,10 @@ class TransactionActivity : AppCompatActivity() {
 
     private fun executeTransaction() {
         TransactionProvider(
-                this,
-                recoverTransactionObject(),
-                Stone.getUserModel(0),
-                Stone.getPinpadFromListAt(0)
+            this,
+            recoverTransactionObject(),
+            Stone.getUserModel(0),
+            Stone.getPinpadFromListAt(0)
         ).apply {
             useDefaultUI(true)
             connectionCallback = object : StoneActionCallback {
@@ -108,9 +110,9 @@ class TransactionActivity : AppCompatActivity() {
                         Toast.makeText(context, R.string.transaction_success, Toast.LENGTH_SHORT).show()
                     } else {
                         Toast.makeText(
-                                context,
-                                getString(R.string.transaction_error_detailed, messageFromAuthorize),
-                                Toast.LENGTH_LONG
+                            context,
+                            getString(R.string.transaction_error_detailed, messageFromAuthorize),
+                            Toast.LENGTH_LONG
                         ).show()
                     }
                 }
@@ -135,8 +137,7 @@ class TransactionActivity : AppCompatActivity() {
         cleanedString += text
 
         val parsedValue = if (cleanedString.isEmpty()) 0.0 else cleanedString.toDouble()
-        val formattedText = NumberFormat.getCurrencyInstance().format(parsedValue / 100)
-        textViewValue.text = formattedText
+        textViewValue.text = parsedValue.transformToCurrency()
     }
 
     private fun deleteChar() {
@@ -144,8 +145,7 @@ class TransactionActivity : AppCompatActivity() {
         if (textValue.isNotEmpty()) {
             val cleanedString = cleanString(textValue.substring(0, textValue.length - 1))
             val parsedValue = if (cleanedString.isEmpty()) 0.0 else cleanedString.toDouble()
-            val formattedText = NumberFormat.getCurrencyInstance().format(parsedValue / 100)
-            textViewValue.text = formattedText
+            textViewValue.text = parsedValue.transformToCurrency()
         }
     }
 
@@ -159,31 +159,27 @@ class TransactionActivity : AppCompatActivity() {
 
     private fun cleanString(text: CharSequence) = text.replace(Regex("[$,.]"), "")
 
-    private fun recoverArrayAdapter(): ArrayAdapter<String> {
-        val installmentList = InstalmentTransactionEnum.values().map {
-            when {
-                it.count == 1 -> getString(R.string.transaction_one_installment)
-                it.insterest -> getString(R.string.transaction_interest_installment, it.count)
-                else -> getString(R.string.transaction_no_interest_installment, it.count)
-            }
-        }
+    private fun recoverArrayAdapter() =
+        ArrayAdapter(
+            this,
+            android.R.layout.simple_spinner_dropdown_item,
+            InstalmentTransactionEnum.values().map { it.toReadableString() }
+        )
 
-        return ArrayAdapter(this, android.R.layout.simple_spinner_dropdown_item, installmentList)
-    }
 
     private fun recoverTransactionObject() =
-            TransactionObject().apply {
-                amount = cleanString(textViewValue.text)
-                isCapture = checkBoxCapture.isChecked
+        TransactionObject().apply {
+            amount = cleanString(textViewValue.text)
+            isCapture = checkBoxCapture.isChecked
 
-                subMerchantCity = "city"
-                subMerchantPostalAddress = "00000000"
-                subMerchantRegisteredIdentifier = "00000000"
-                subMerchantTaxIdentificationNumber = "33368443000199"
-                subMerchantCategoryCode = "123"
-                subMerchantAddress = "address"
+            subMerchantCity = "city"
+            subMerchantPostalAddress = "00000000"
+            subMerchantRegisteredIdentifier = "00000000"
+            subMerchantTaxIdentificationNumber = "33368443000199"
+            subMerchantCategoryCode = "123"
+            subMerchantAddress = "address"
 
-                instalmentTransaction = InstalmentTransactionEnum.getAt(spinner.selectedItemPosition)
-                typeOfTransaction = if (radioCredit.isChecked) TypeOfTransactionEnum.CREDIT else TypeOfTransactionEnum.DEBIT
-            }
+            instalmentTransaction = InstalmentTransactionEnum.getAt(spinner.selectedItemPosition)
+            typeOfTransaction = if (radioCredit.isChecked) TypeOfTransactionEnum.CREDIT else TypeOfTransactionEnum.DEBIT
+        }
 }

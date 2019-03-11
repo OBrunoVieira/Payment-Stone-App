@@ -12,7 +12,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.example.paymentstone.R
-import com.example.paymentstone.commons.bindView
+import com.example.paymentstone.commons.extensions.bindView
 import com.example.paymentstone.ui.views.DevicesDialog
 import com.example.paymentstone.ui.views.MessageDialog
 import stone.application.interfaces.StoneCallbackInterface
@@ -24,6 +24,7 @@ class DashboardActivity : AppCompatActivity() {
     private val cardViewTransaction by bindView<CardView>(R.id.dashboard_card_view_transaction)
     private val cardViewMessage by bindView<CardView>(R.id.dashboard_card_view_message)
     private val cardViewExit by bindView<CardView>(R.id.dashboard_card_view_logout)
+    private val cardViewTransactionList by bindView<CardView>(R.id.dashboard_card_view_transaction_list)
     private val textViewPinPadStatus by bindView<TextView>(R.id.dashboard_text_view_pin_pad_status)
     private val buttonConnect by bindView<Button>(R.id.dashboard_button_pin_pad_action)
 
@@ -43,6 +44,10 @@ class DashboardActivity : AppCompatActivity() {
             executeAfterPinPadConnection(fun() {
                 MessageDialog(this).show()
             })
+        }
+
+        cardViewTransactionList.setOnClickListener {
+            startActivity(Intent(this, TransactionListActivity::class.java))
         }
 
         cardViewExit.setOnClickListener {
@@ -90,9 +95,9 @@ class DashboardActivity : AppCompatActivity() {
         }
 
         buttonConnect.apply {
-            setText(if (isPinPadConnected) R.string.dashboard_disconnect else R.string.dashboard_connect )
-            setTextColor(ContextCompat.getColor(context, if (isPinPadConnected) R.color.pomegranate else R.color.atlantis ))
-            setBackgroundResource(if (isPinPadConnected)  R.drawable.shape_outline_red else R.drawable.shape_outline_green)
+            setText(if (isPinPadConnected) R.string.dashboard_disconnect else R.string.dashboard_connect)
+            setTextColor(ContextCompat.getColor(context, if (isPinPadConnected) R.color.pomegranate else R.color.atlantis))
+            setBackgroundResource(if (isPinPadConnected) R.drawable.shape_outline_red else R.drawable.shape_outline_green)
         }
     }
 
