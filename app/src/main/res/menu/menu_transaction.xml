@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/menu_transaction_client"
+        android:title="@string/transaction_client" />
+    <item
+        android:id="@+id/menu_transaction_establishment"
+        android:title="@string/transaction_establishment" />
+    <item
+        android:id="@+id/menu_transaction_capture"
+        android:title="@string/transaction_capture" />
+    <item
+        android:id="@+id/menu_transaction_cancel"
+        android:title="@string/transaction_cancel" />
+</menu>
