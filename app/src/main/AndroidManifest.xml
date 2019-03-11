@@ -25,5 +25,7 @@
 
         <activity android:name=".ui.activities.TransactionActivity" />
 
+        <activity android:name=".ui.activities.TransactionListActivity" />
+
     </application>
 </manifest>
