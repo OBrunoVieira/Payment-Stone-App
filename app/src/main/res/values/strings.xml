@@ -23,6 +23,7 @@
     <string name="dashboard_transaction">Fazer Transação</string>
     <string name="dashboard_message_pin_pad">Mensagem ao PinPad</string>
     <string name="dashboard_exit">Encerrar Sessão</string>
+    <string name="dashboard_transaction_list">Lista de Transações</string>
     <string name="dashboard_pin_pad_not_connected">PinPad não conectado</string>
     <string name="dashboard_pin_pad_connected">PinPad conectado</string>
     <string name="dashboard_pin_pad_not_connected_title">Opa! Cadê o PinPad?!</string>
@@ -67,5 +68,21 @@
     <string name="transaction_method_payment">Selecione um método para pagamento</string>
     <string name="transaction_installment_number">Selecione o número de parcelas</string>
     <string name="transaction_with_capture">Transação com captura</string>
+    <string name="transaction_cancel">Cancelar transação</string>
+    <string name="transaction_client">Enviar via do cliente</string>
+    <string name="transaction_establishment">Enviar via do estabelecimento</string>
+    <string name="transaction_receipt_feedback">Enviando comprovante...</string>
+    <string name="transaction_receipt_error">Erro ao enviar o comprovante</string>
+    <string name="transaction_receipt_success">Comprovante enviado com sucesso</string>
+    <string name="transaction_cancel_feedback">Cancelando transação...</string>
+    <string name="transaction_cancel_error">Um erro ocorreu durante o cancelamento com a transacao de id: %d</string>
+    <string name="transaction_capture">Capturar transação</string>
+    <string name="transaction_capture_feedback">Efetuando captura...</string>
+    <string name="transaction_capture_success">Transação capturada com sucesso =D</string>
+    <string name="transaction_capture_error">Houve um erro ao capturar a transação =[</string>
     <!--Transaction End-->
+
+    <!--Transaction List Start-->
+    <string name="transaction_list_empty">A sua lista de transações está vazia =(</string>
+    <!--Transaction List End-->
 </resources>
