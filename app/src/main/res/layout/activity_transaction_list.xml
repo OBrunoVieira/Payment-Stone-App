@@ -10,9 +10,11 @@
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:background="@color/colorAccent"
+        android:theme="@style/ThemeOverlay.AppCompat.Dark.ActionBar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:title="@string/transaction_list_title" />
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/transaction_list_recycler_view"
@@ -32,8 +34,8 @@
         android:drawableTop="@drawable/ic_error"
         android:drawablePadding="40dp"
         android:gravity="center"
-        android:textSize="16sp"
         android:text="@string/transaction_list_empty"
+        android:textSize="16sp"
         android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
