@@ -15,7 +15,7 @@ import stone.utils.Stone
 import stone.application.StoneStart
 
 
-class HomeActivity : AppCompatActivity() {
+class HomeActivity : BaseActivity() {
 
     private val fabDone by bindView<FloatingActionButton>(R.id.home_fab_done)
     private val editText by bindView<EditText>(R.id.home_edit_text_stone_code)
@@ -26,6 +26,7 @@ class HomeActivity : AppCompatActivity() {
         setContentView(com.example.paymentstone.R.layout.activity_home)
 
         if (StoneStart.init(this) != null) {
+            Stone.setEnvironment(Environment.SANDBOX)
             redirectToDashboard()
             return
         }

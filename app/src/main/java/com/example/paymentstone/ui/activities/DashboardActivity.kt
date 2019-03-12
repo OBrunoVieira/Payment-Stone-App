@@ -11,6 +11,7 @@ import android.widget.Toast.LENGTH_SHORT
 import androidx.annotation.StringRes
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.core.content.ContextCompat
 import com.example.paymentstone.R
@@ -22,7 +23,7 @@ import stone.providers.ActiveApplicationProvider
 import stone.providers.ReversalProvider
 import stone.utils.Stone
 
-class DashboardActivity : AppCompatActivity() {
+class DashboardActivity : BaseActivity() {
 
     private val cardViewTransaction by bindView<CardView>(R.id.dashboard_card_view_transaction)
     private val cardViewMessage by bindView<CardView>(R.id.dashboard_card_view_message)

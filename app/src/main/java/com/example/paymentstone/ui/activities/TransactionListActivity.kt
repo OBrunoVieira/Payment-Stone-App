@@ -7,6 +7,7 @@ import android.widget.TextView
 import android.widget.Toast
 import android.widget.Toast.LENGTH_SHORT
 import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.recyclerview.widget.RecyclerView
 import com.example.paymentstone.R
 import com.example.paymentstone.commons.extensions.bindView
@@ -28,7 +29,8 @@ import stone.providers.CaptureTransactionProvider
 import stone.providers.SendEmailTransactionProvider
 import stone.repository.remote.email.pombo.email.Contact
 
-class TransactionListActivity : AppCompatActivity() {
+class TransactionListActivity : BaseActivity() {
+    private val toolbar by bindView<Toolbar>(R.id.transaction_list_toolbar)
     private val recyclerView by bindView<RecyclerView>(R.id.transaction_list_recycler_view)
     private val textViewEmpty by bindView<TextView>(R.id.transaction_list_text_view_empty)
     private val adapter = TransactionListAdapter(listener = recoverMenuListener())
@@ -36,6 +38,9 @@ class TransactionListActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transaction_list)
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.setDisplayHomeAsUpEnabled(true)
 
         recyclerView.adapter = adapter
         recoverTransactionList()

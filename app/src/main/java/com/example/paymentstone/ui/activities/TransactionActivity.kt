@@ -6,7 +6,7 @@ import android.view.View.GONE
 import android.view.View.VISIBLE
 import android.widget.*
 import androidx.annotation.IdRes
-import androidx.appcompat.app.AppCompatActivity
+import androidx.appcompat.widget.Toolbar
 import androidx.cardview.widget.CardView
 import androidx.constraintlayout.widget.Group
 import com.example.paymentstone.R
@@ -23,9 +23,8 @@ import stone.application.interfaces.StoneActionCallback
 import stone.database.transaction.TransactionObject
 import stone.providers.TransactionProvider
 import stone.utils.Stone
-import java.text.NumberFormat
 
-class TransactionActivity : AppCompatActivity() {
+class TransactionActivity : BaseActivity() {
 
     private val textViewZero by bindView<TextView>(R.id.transaction_value_text_view_zero)
     private val textViewOne by bindView<TextView>(R.id.transaction_value_text_view_one)
@@ -49,10 +48,18 @@ class TransactionActivity : AppCompatActivity() {
     private val spinner by bindView<Spinner>(R.id.transaction_method_spinner)
     private val checkBoxCapture by bindView<MaterialCheckBox>(R.id.transaction_method_check_box)
     private val groupInstallment by bindView<Group>(R.id.transaction_method_group_installment)
+    private val toolbar by bindView<Toolbar>(R.id.transaction_toolbar)
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_transaction)
+
+        setSupportActionBar(toolbar)
+        supportActionBar?.let {
+            it.title = null
+            it.setDisplayHomeAsUpEnabled(true)
+        }
+
         spinner.adapter = recoverArrayAdapter()
         setupNumberPresentation()
 
