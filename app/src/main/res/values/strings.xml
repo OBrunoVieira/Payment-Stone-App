@@ -3,6 +3,7 @@
 
     <!-- Default Start -->
     <string name="ok">OK</string>
+    <string name="yes">SIM</string>
     <string name="settings">Configurações</string>
     <string name="cancel">Cancelar</string>
     <string name="loading">Carregando...</string>
@@ -24,6 +25,7 @@
     <string name="dashboard_message_pin_pad">Mensagem ao PinPad</string>
     <string name="dashboard_exit">Encerrar Sessão</string>
     <string name="dashboard_transaction_list">Lista de Transações</string>
+    <string name="dashboard_transaction_error">Cancelar Transações c/ Erro</string>
     <string name="dashboard_pin_pad_not_connected">PinPad não conectado</string>
     <string name="dashboard_pin_pad_connected">PinPad conectado</string>
     <string name="dashboard_pin_pad_not_connected_title">Opa! Cadê o PinPad?!</string>
@@ -85,4 +87,11 @@
     <!--Transaction List Start-->
     <string name="transaction_list_empty">A sua lista de transações está vazia =(</string>
     <!--Transaction List End-->
+
+    <!--Transaction Error Start-->
+    <string name="transaction_error_confirmation">Você tem certeza que deseja cancelar as transações com erro?</string>
+    <string name="transaction_error_loading">Cancelando transações...</string>
+    <string name="transaction_error_got_success">Transações canceladas com sucesso =]</string>
+    <string name="transaction_error_got_fail">Ocorreu um erro ao cancelar as transações</string>
+    <!--Transaction Error End-->
 </resources>
